@@ -6,10 +6,18 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+    # Étape 1 : On télécharge le code du dépôt dans la machine virtuelle
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: HTML Validate
-      uses: cyisfor/html-validate-action@v1
+    # Étape 2 : On configure l'environnement Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        files: '*.html'
+        node-version: '20'
+
+    # Étape 3 : On installe et on lance HTMLHint directement via la ligne de commande (CLI)
+    - name: Run HTMLHint
+      run: |
+        npm install -g htmlhint
+        htmlhint *.html
