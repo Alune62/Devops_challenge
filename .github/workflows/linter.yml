@@ -9,7 +9,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: HTML Hint
-      uses: htmlhint/htmlhint-action@v2
+    - name: HTML Validate
+      uses: cyisfor/html-validate-action@v1
       with:
-        file_pattern: '*.html'
+        files: '*.html'
